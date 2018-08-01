@@ -10,7 +10,8 @@ const platformFiles = {
     'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/windows/catboostmodel.lib'
   ],
   linux: [
-    'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/linux/libcatboostmodel.so'
+    'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/linux/libcatboostmodel.so',
+    'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/linux/libcatboostmodel.so.1'
   ]
 }
 
