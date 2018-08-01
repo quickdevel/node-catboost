@@ -24,7 +24,7 @@
         ['OS=="linux"', {
           'libraries': [
             '../libs/libcatboostmodel.so',
-            '-Wl,--disable-new-dtags -Wl,-rpath=\'$${ORIGIN}/../../libs\'
+            '-Wl,--disable-new-dtags -Wl,-rpath=\'$${ORIGIN}/../../libs\''
           ]
         }],
       ]
