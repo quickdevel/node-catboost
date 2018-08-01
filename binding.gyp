@@ -20,7 +20,13 @@
               'libs/catboostmodel.dll'
             ]
           }]
-        }]
+        }],
+        ['OS=="linux"', {
+          'libraries': [
+            '../libs/libcatboostmodel.so',
+            '-Wl,--disable-new-dtags -Wl,-rpath=\'$${ORIGIN}/../../libs\'
+          ]
+        }],
       ]
     }
   ]

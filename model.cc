@@ -20,8 +20,6 @@ Model::Model(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Model>(info) {
 		Napi::TypeError::New(env, "Model path expected").ThrowAsJavaScriptException();
 	}
 
-	Napi::Number value = info[0].As<Napi::Number>();
-
 	this->calcer_ = new ModelCalcerWrapper(info[0].ToString().Utf8Value());
 }
 
@@ -38,7 +36,8 @@ Napi::Value Model::Calc(const Napi::CallbackInfo& info) {
 	double result = 0;
 	try
 	{
-		this->FeaturesToVectors(info[0].As<Napi::Array>(), floatFeatures, catFeatures);
+		Napi::Array features = info[0].As<Napi::Array>();
+		this->FeaturesToVectors(features, floatFeatures, catFeatures);
 		result = this->calcer_->Calc(floatFeatures, catFeatures);
 	}
 	catch(const std::exception& e)
@@ -60,7 +59,7 @@ Napi::Value Model::CalcMany(const Napi::CallbackInfo& info) {
 	}
 
 	Napi::Array objectsList = info[0].As<Napi::Array>();
-	
+
 	for(size_t i = 0; i < objectsList.Length(); i++) {
 		std::vector<float> floatFeatures;
 		std::vector<std::string> catFeatures;
@@ -73,7 +72,8 @@ Napi::Value Model::CalcMany(const Napi::CallbackInfo& info) {
 
 		try
 		{
-			this->FeaturesToVectors(object.As<Napi::Array>(), floatFeatures, catFeatures);
+			Napi::Array features = info[0].As<Napi::Array>();
+			this->FeaturesToVectors(features, floatFeatures, catFeatures);
 		}
 		catch(const std::exception& e)
 		{

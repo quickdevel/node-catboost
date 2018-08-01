@@ -2,7 +2,7 @@
 #define MODEL_H
 
 #include <napi.h>
-#include "includes\wrapped_calcer.h"
+#include "includes/wrapped_calcer.h"
 
 class Model : public Napi::ObjectWrap<Model> {
  public:
