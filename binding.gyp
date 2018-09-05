@@ -27,14 +27,6 @@
             '-Wl,--disable-new-dtags -Wl,-rpath=\'$${ORIGIN}/../../libs\''
           ]
         }],
-        ['OS=="mac"', {
-          'libraries': [
-            '../libs/libcatboostmodel.dylib'
-          ],
-          'xcode_settings': {
-            'GCC_ENABLE_CPP_EXCEPTIONS': 'YES'
-          }
-        }]
       ]
     }
   ]
