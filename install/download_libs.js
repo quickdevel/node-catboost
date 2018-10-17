@@ -12,6 +12,10 @@ const platformFiles = {
   linux: [
     'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/linux/libcatboostmodel.so',
     'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/linux/libcatboostmodel.so.1'
+  ],
+  darwin: [
+    'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/osx/libcatboostmodel.dylib',
+    'https://raw.githubusercontent.com/quickdevel/catboostmodel-libs/master/v0.9.1.1/osx/libcatboostmodel.dylib.1'
   ]
 }
 

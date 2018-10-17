@@ -27,6 +27,25 @@
             '-Wl,--disable-new-dtags -Wl,-rpath=\'$${ORIGIN}/../../libs\''
           ]
         }],
+        ['OS=="mac"', {
+          'libraries': [
+            '../libs/libcatboostmodel.dylib',
+            '-rpath \'@loader_path/../../libs\''
+          ],
+          "postbuilds": [{
+            "postbuild_name": "Adjust link path to CatBoostModel lib",
+            "action": [
+              "install_name_tool",
+              "-change",
+              "libcatboostmodel.dylib.1",
+              "@loader_path/../../libs/libcatboostmodel.dylib.1",
+              "<@(PRODUCT_DIR)/catboost.node"
+            ]
+          }],
+          'xcode_settings': {
+            'GCC_ENABLE_CPP_EXCEPTIONS': 'YES'
+          }
+        }]
       ]
     }
   ]
