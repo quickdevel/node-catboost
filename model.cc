@@ -20,7 +20,14 @@ Model::Model(const Napi::CallbackInfo& info) : Napi::ObjectWrap<Model>(info) {
 		Napi::TypeError::New(env, "Model path expected").ThrowAsJavaScriptException();
 	}
 
-	this->calcer_ = new ModelCalcerWrapper(info[0].ToString().Utf8Value());
+	try
+	{
+		this->calcer_ = new ModelCalcerWrapper(info[0].ToString().Utf8Value());
+	}
+	catch(const std::exception& e)
+	{
+		Napi::TypeError::New(env, e.what()).ThrowAsJavaScriptException();
+	}
 }
 
 Napi::Value Model::Calc(const Napi::CallbackInfo& info) {
